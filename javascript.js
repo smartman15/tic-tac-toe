@@ -56,7 +56,7 @@ const gameboard = (() => {
     // return getBoard, printBoard, putSpot functions
     return {getBoard, printBoard, putSpot};
 
-})
+})();
     
 
 
@@ -165,9 +165,8 @@ const gameController = (() => {
 
     // return playRound, getActivePlayer
     return {playRound, getActivePlayer};
-})
+})();
     
 
 
 // const game variable for gameController object
-gameController.playRound();
