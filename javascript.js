@@ -170,3 +170,4 @@ const gameController = (() => {
 
 
 // const game variable for gameController object
+gameController.playRound(1, 1);
