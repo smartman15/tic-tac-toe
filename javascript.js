@@ -11,7 +11,7 @@
     // get gameboard function
 
     // putSpot function for player to put their spot in gameboard
-    // pass row and column as parameters
+    // pass row, column, player as parameters
 
         // if the spot on row and column is empty
             // place player number on row and column
@@ -47,23 +47,34 @@
     // set name function
 
 
-// GameController objectt
+// GameController object
     // create player 1 and player 2 objects
     // create gameboard object
 
     // create activePlayer variable to keep track of whose turn it is
 
     // create switchPlayer function to take turns 
-        // if activeLlayer is player 1
+        // if activePlayer is player 1
             // set activePlayer to player 2
         
         // else if activePlayer is player 2
             // set activePlayer to player 1
 
-    // get activePlayer function that returns activePlayer
+    // getActivePlayer function that returns activePlayer
 
     // create printNewRound function to indicate that a new round has started (prints after a player is finished with their turn)
         // print gameBoard to display the board
         // print that it's activePlayer's turn
     
+    // create playRound function that takes row, columns,  as parameters
+        // print that player has placed their spot on row and column
+        // call gameboard putSpot function and pass row, colmun and activePlayer as values
+
+        // win logic
+        
+        // switch player
+        // printNewRound
     
+    // call printNewRound function to display initial round
+
+    // return playRound, getActivePlayer
