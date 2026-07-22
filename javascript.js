@@ -154,27 +154,55 @@ const gameController = (() => {
         // win logic
         // if there are 3-in-a-rows vertically, horizontally, or diagonally, it counts as a win
         // create values array to store the values of a row/column in it
+        let values = [];
         // if the all the values in the array are the same, it's a win
 
         // horizontally
         // loop through row
+        for(let i = 0; i < 3; i++){
             // loop through column
+            for(let j = 0; j < 3; j++){
                 // push value at index [row][column] into values array
-
+                values.push(gameboard.getBoard()[i][j]);
+            }
+                
             // if all values in values array are the same
+            if(values.every((v) => v === values[0]) == true){
                 // check which player it is (player 1 or player 2)
                     // print "player has won"
                     // return
+                console.log(`${v.getName()} wins!`)
+                return;
+            }
+
+            else values = [];
+                
+        }
+        
+        values = [];
 
         // vertically 
         // loop through row
+        for(let i = 0; i < 3; i++){
             // loop through column
+            for(let j = 0; j < 3; j++){
                 // push value at index [column][row] into values array
-
+                values.push(gameboard.getBoard()[j][i]);
+            }
+                
             // if all values in values array are the same
+            if(values.every((v) => v === values[0])){
+                console.log(`${v.getName()} wins!`)
+                return;
                 // check which player it is (player 1 or player 2)
                     // print "player has won"
                     // return
+            }
+
+            else values = [];
+                
+        }
+            
 
         // diagonally
         // push values at index [0][0], [1][1], [2][2] into values array
