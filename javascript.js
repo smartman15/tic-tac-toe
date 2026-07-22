@@ -149,7 +149,7 @@ const gameController = (() => {
         // print that player has placed their spot on row and column
         console.log(`${activePlayer.getName()} has placed their mark`);
         // call gameboard putSpot function and pass row, column and activePlayer as values
-        gameboard.putSpot(row, col, activePlayer);
+        gameboard.putSpot(row, col, activePlayer.getNumber());
 
         // win logic
         // if there are 3-in-a-rows vertically, horizontally, or diagonally, it counts as a win
@@ -236,3 +236,7 @@ const gameController = (() => {
 
 // const game variable for gameController object
 gameController.playRound(1, 1);
+gameController.playRound(1, 1);
+gameController.playRound(1, 0);
+gameController.playRound(1, 1);
+gameController.playRound(1, 2);
