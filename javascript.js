@@ -8,17 +8,17 @@ const gameboard = (() => {
     const board = [];
 
     // loop row times
-    for(let i = 0; i < rows; i++){
+    for (let i = 0; i < rows; i++) {
         // insert array into index i
         board[i] = [];
         // for loop column times
-        for(let j = 0; j < cols; j++){
+        for (let j = 0; j < cols; j++) {
             // push cell into array index i
             board[i].push(Cell());
         }
-            
+
     }
-        
+
 
     // get gameboard function
     const getBoard = () => board;
@@ -27,19 +27,19 @@ const gameboard = (() => {
     // pass row, column, player as parameters
     const putSpot = (row, column, player) => {
         // if the spot on row and column is empty
-        if(board[row][column].getValue() === 0){
+        if (board[row][column].getValue() === 0) {
             // place player number on row and column
             board[row][column].setValue(player);
         }
-            
+
         // else 
-        else{
+        else {
             // print invalid row and column
             console.log("invalid row and column");
-        } 
+        }
     }
 
-            
+
     // print board function
     const printBoard = () => {
         // create boardWithCells variable
@@ -51,17 +51,17 @@ const gameboard = (() => {
         // print boardWithCells
         console.log(boardWithCells);
     };
-        
-    
+
+
     // return getBoard, printBoard, putSpot functions
-    return {getBoard, printBoard, putSpot};
+    return { getBoard, printBoard, putSpot };
 
 })();
-    
+
 
 
 // Cell object
-function Cell(){
+function Cell() {
     // value variable to contain the value of player:
     // 0 means its empty
     // player 1 = 1
@@ -76,13 +76,13 @@ function Cell(){
     }
 
     // return get and set functions
-    return {getValue, setValue};
+    return { getValue, setValue };
 }
-   
+
 
 
 // Player object
-function Player(){
+function Player() {
     // number variable (to put into cells later)
     let number;
     let name;
@@ -92,7 +92,7 @@ function Player(){
     // set name function
     const setName = (playerName) => name = playerName;
 
-    
+
     // get number function
     const getNumber = () => number;
     // set number function
@@ -100,9 +100,9 @@ function Player(){
         number = num;
     }
 
-    return {getName, setName, getNumber, setNumber};
+    return { getName, setName, getNumber, setNumber };
 }
-    
+
 
 
 // GameController object
@@ -123,14 +123,14 @@ const gameController = (() => {
     // create switchPlayer function to take turns 
     const switchPlayer = () => {
         // if activePlayer is player 1
-        if(activePlayer === player1) activePlayer = player2;
-            // set activePlayer to player 2
-        
+        if (activePlayer === player1) activePlayer = player2;
+        // set activePlayer to player 2
+
         // else if activePlayer is player 2
-        else if(activePlayer === player2) activePlayer = player1;
-            // set activePlayer to player 1
+        else if (activePlayer === player2) activePlayer = player1;
+        // set activePlayer to player 1
     }
-        
+
 
     // getActivePlayer function that returns activePlayer
     const getActivePlayer = () => activePlayer;
@@ -142,8 +142,8 @@ const gameController = (() => {
         // print that it's activePlayer's turn
         console.log(`It's ${activePlayer.getName()}'s turn`);
     }
-        
-    
+
+
     // create playRound function that takes row, columns,  as parameters
     const playRound = (row, col) => {
         // print that player has placed their spot on row and column
@@ -159,95 +159,117 @@ const gameController = (() => {
 
         // horizontally
         // loop through row
-        for(let i = 0; i < 3; i++){
+        for (let i = 0; i < 3; i++) {
             // loop through column
-            for(let j = 0; j < 3; j++){
+            for (let j = 0; j < 3; j++) {
                 // push value at index [row][column] into values array
                 values.push(gameboard.getBoard()[i][j]);
             }
-            
+
             const validValues = (v) => ((v.getValue() === values[0].getValue()) && (v.getValue() != 0));
             // if all values in values array are the same
-            if(values.every(validValues)){
+            if (values.every(validValues)) {
                 // check which player it is (player 1 or player 2)
-                    // print "player has won"
-                    // return
-                if(values[0].getValue() == 1) {
+                // print "player has won"
+                // return
+                if (values[0].getValue() == 1) {
                     console.log("Player 1 wins!");
                     return;
                 }
-                else if(values[0].getValue() == 2){
+                else if (values[0].getValue() == 2) {
                     console.log("Player 2 wins!");
                     return;
                 }
-                else{
+                else {
                     console.log("Invalid winner");
                     return;
                 }
             }
 
             else values = [];
-                
+
         }
-        
+
         values = [];
 
         // vertically 
         // loop through row
-        for(let i = 0; i < 3; i++){
+        for (let i = 0; i < 3; i++) {
             // loop through column
-            for(let j = 0; j < 3; j++){
+            for (let j = 0; j < 3; j++) {
                 // push value at index [column][row] into values array
                 values.push(gameboard.getBoard()[j][i]);
             }
-                
+
+            const validValues = (v) => ((v.getValue() === values[0].getValue()) && (v.getValue() != 0));
             // if all values in values array are the same
-            if(values.every((v) => v === values[0])){
-                console.log(`${v.getName()} wins!`)
-                return;
+            if (values.every(validValues)) {
+
                 // check which player it is (player 1 or player 2)
-                    // print "player has won"
-                    // return
+                // print "player has won"
+                // return
+                if (values[0].getValue() == 1) {
+                    console.log("Player 1 wins!");
+                    return;
+                }
+                else if (values[0].getValue() == 2) {
+                    console.log("Player 2 wins!");
+                    return;
+                }
+                else {
+                    console.log("Invalid winner");
+                    return;
+                }
             }
 
             else values = [];
-                
+
         }
-            
+
 
         // diagonally
         // push values at index [0][0], [1][1], [2][2] into values array
         // if all values in values array are the same
-            // check which player it is (player 1 or player 2)
-                // print "player has won"
-                // return
+        // check which player it is (player 1 or player 2)
+        // print "player has won"
+        // return
 
         // push values at index [2][0], [1][1], [0][2] into values array
         // if all values in values array are the same
-            // check which player it is (player 1 or player 2)
-                // print "player has won"
-                // return
+        // check which player it is (player 1 or player 2)
+        // print "player has won"
+        // return
 
-        
+
         // switch player
         switchPlayer();
         // printNewRound
         printNewRound();
     }
-        
-    
+
+
     // call printNewRound function to display initial round
     printNewRound();
 
     // return playRound, getActivePlayer
-    return {playRound, getActivePlayer};
+    return { playRound, getActivePlayer };
 })();
-    
+
 
 
 // const game variable for gameController object
+
+// horizontal player 1 win
+// gameController.playRound(1, 1);
+// gameController.playRound(1, 1);
+// gameController.playRound(1, 0);
+// gameController.playRound(1, 1);
+// gameController.playRound(1, 2);
+
+// horizontal player 2 win
 gameController.playRound(1, 1);
+gameController.playRound(2, 1);
 gameController.playRound(1, 1);
-gameController.playRound(1, 0);
+gameController.playRound(2, 0);
 gameController.playRound(1, 1);
-gameController.playRound(1, 2);
+gameController.playRound(2, 2);
