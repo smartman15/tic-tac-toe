@@ -165,14 +165,25 @@ const gameController = (() => {
                 // push value at index [row][column] into values array
                 values.push(gameboard.getBoard()[i][j]);
             }
-                
+            
+            const validValues = (v) => ((v.getValue() === values[0].getValue()) && (v.getValue() != 0));
             // if all values in values array are the same
-            if(values.every((v) => v === values[0]) == true){
+            if(values.every(validValues)){
                 // check which player it is (player 1 or player 2)
                     // print "player has won"
                     // return
-                console.log(`${v.getName()} wins!`)
-                return;
+                if(values[0].getValue() == 1) {
+                    console.log("Player 1 wins!");
+                    return;
+                }
+                else if(values[0].getValue() == 2){
+                    console.log("Player 2 wins!");
+                    return;
+                }
+                else{
+                    console.log("Invalid winner");
+                    return;
+                }
             }
 
             else values = [];
