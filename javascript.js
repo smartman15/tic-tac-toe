@@ -152,6 +152,43 @@ const gameController = (() => {
         gameboard.putSpot(row, col, activePlayer);
 
         // win logic
+        // if there are 3-in-a-rows vertically, horizontally, or diagonally, it counts as a win
+        // create values array to store the values of a row/column in it
+        // if the all the values in the array are the same, it's a win
+
+        // horizontally
+        // loop through row
+            // loop through column
+                // push value at index [row][column] into values array
+
+            // if all values in values array are the same
+                // check which player it is (player 1 or player 2)
+                    // print "player has won"
+                    // return
+
+        // vertically 
+        // loop through row
+            // loop through column
+                // push value at index [column][row] into values array
+
+            // if all values in values array are the same
+                // check which player it is (player 1 or player 2)
+                    // print "player has won"
+                    // return
+
+        // diagonally
+        // push values at index [0][0], [1][1], [2][2] into values array
+        // if all values in values array are the same
+            // check which player it is (player 1 or player 2)
+                // print "player has won"
+                // return
+
+        // push values at index [2][0], [1][1], [0][2] into values array
+        // if all values in values array are the same
+            // check which player it is (player 1 or player 2)
+                // print "player has won"
+                // return
+
         
         // switch player
         switchPlayer();
