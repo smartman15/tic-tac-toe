@@ -27,9 +27,9 @@ const gameboard = (() => {
     // pass row, column, player as parameters
     const putSpot = (row, column, player) => {
         // if the spot on row and column is empty
-        if(board[row][column] === 0){
+        if(board[row][column].getValue() === 0){
             // place player number on row and column
-            board[row][column] = player;
+            board[row][column].setValue(player);
         }
             
         // else 
@@ -66,7 +66,7 @@ function Cell(){
     // 0 means its empty
     // player 1 = 1
     // player 2 = 2
-    const token = 0;
+    let token = 0;
 
     // get value of cell function
     const getValue = () => token;
