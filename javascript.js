@@ -174,10 +174,14 @@ const gameController = (() => {
                 // return
                 if (values[0].getValue() == 1) {
                     console.log("Player 1 wins!");
+                    console.log("Final board");
+                    gameboard.printBoard();
                     return;
                 }
                 else if (values[0].getValue() == 2) {
                     console.log("Player 2 wins!");
+                    console.log("Final board");
+                    gameboard.printBoard();
                     return;
                 }
                 else {
@@ -210,10 +214,14 @@ const gameController = (() => {
                 // return
                 if (values[0].getValue() == 1) {
                     console.log("Player 1 wins!");
+                    console.log("Final board");
+                    gameboard.printBoard();
                     return;
                 }
                 else if (values[0].getValue() == 2) {
                     console.log("Player 2 wins!");
+                    console.log("Final board");
+                    gameboard.printBoard();
                     return;
                 }
                 else {
@@ -267,9 +275,16 @@ const gameController = (() => {
 // gameController.playRound(1, 2);
 
 // horizontal player 2 win
-gameController.playRound(1, 1);
-gameController.playRound(2, 1);
-gameController.playRound(1, 1);
-gameController.playRound(2, 0);
-gameController.playRound(1, 1);
-gameController.playRound(2, 2);
+// gameController.playRound(1, 1);
+// gameController.playRound(2, 1);
+// gameController.playRound(1, 1);
+// gameController.playRound(2, 0);
+// gameController.playRound(1, 1);
+// gameController.playRound(2, 2);
+
+// vertical player 1 win
+// gameController.playRound(1, 1);
+// gameController.playRound(1, 1);
+// gameController.playRound(0, 1);
+// gameController.playRound(1, 1);
+// gameController.playRound(2, 1);
