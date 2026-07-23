@@ -237,16 +237,64 @@ const gameController = (() => {
 
         // diagonally
         // push values at index [0][0], [1][1], [2][2] into values array
+        values.push(gameboard.getBoard()[0][0]);
+        values.push(gameboard.getBoard()[1][1]);
+        values.push(gameboard.getBoard()[2][2]);
         // if all values in values array are the same
-        // check which player it is (player 1 or player 2)
-        // print "player has won"
-        // return
+        const validValues = (v) => ((v.getValue() === values[0].getValue()) && (v.getValue() != 0));
+        if (values.every(validValues)) {
+            // check which player it is (player 1 or player 2)
+            // print "player has won"
+            // return
+            if (values[0].getValue() == 1) {
+                console.log("Player 1 wins!");
+                console.log("Final board");
+                gameboard.printBoard();
+                return;
+            }
+            else if (values[0].getValue() == 2) {
+                console.log("Player 2 wins!");
+                console.log("Final board");
+                gameboard.printBoard();
+                return;
+            }
+            else {
+                console.log("Invalid winner");
+                return;
+            }
+        }
+
+        else values = [];
+
 
         // push values at index [2][0], [1][1], [0][2] into values array
+        values.push(gameboard.getBoard()[2][0]);
+        values.push(gameboard.getBoard()[1][1]);
+        values.push(gameboard.getBoard()[0][2]);
         // if all values in values array are the same
-        // check which player it is (player 1 or player 2)
-        // print "player has won"
-        // return
+        if (values.every(validValues)) {
+            // check which player it is (player 1 or player 2)
+            // print "player has won"
+            // return
+            if (values[0].getValue() == 1) {
+                console.log("Player 1 wins!");
+                console.log("Final board");
+                gameboard.printBoard();
+                return;
+            }
+            else if (values[0].getValue() == 2) {
+                console.log("Player 2 wins!");
+                console.log("Final board");
+                gameboard.printBoard();
+                return;
+            }
+            else {
+                console.log("Invalid winner");
+                return;
+            }
+        }
+
+        else values = [];
 
 
         // switch player
@@ -288,3 +336,17 @@ const gameController = (() => {
 // gameController.playRound(0, 1);
 // gameController.playRound(1, 1);
 // gameController.playRound(2, 1);
+
+// diagonal win ver 1
+// gameController.playRound(1, 1);
+// gameController.playRound(1, 1);
+// gameController.playRound(0, 0);
+// gameController.playRound(1, 1);
+// gameController.playRound(2, 2);
+
+// diaognal win ver 2
+gameController.playRound(2, 0);
+gameController.playRound(2, 0);
+gameController.playRound(1, 1);
+gameController.playRound(1, 1);
+gameController.playRound(0, 2);
