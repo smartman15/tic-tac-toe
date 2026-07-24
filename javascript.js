@@ -312,6 +312,47 @@ const gameController = (() => {
 })();
 
 
+const screenController = (() => {
+    const playerTurnDiv = document.querySelector('.turn');
+    const boardDiv = document.querySelector(".board");
+
+    // updateScreen() function
+        // clear board by setting textcontent to ""
+
+        // get activePlayer from gameController
+
+        // display that it's activePlayer's turn by putting activePlayer as textcontent in playerTurnDiv
+
+        // using forEach to loop:
+        // loop through board row, index as rowIdx
+            // loop through board cell, index as colIdx
+                // create cellBtn variable as a button
+                // give cellBtn a class of 'cell'
+
+                // give cellBtn data attribute for row and column
+                // set row to rowIdx
+                // set column to colIdx
+                // set cellBtn textcontent to cell value
+                // push cellBtn into board
+
+    
+    // create event listener for board
+    // clickEventHandler function, e as parameter
+        // create selectedRow variable 
+        // create selectedCol variable
+        // set selectedRow with e's rowIdx
+        // set selectedCol with e's colIdx
+
+        // create if statement to make sure a row and column has been clicked, not a gap
+
+        // pass selectedRow, selectedCol to playRound()
+        // execute updateScreen()
+    // add the clickEventHandler to the board div
+
+    // update screen using updateScreen()
+})();
+
+
 
 // const game variable for gameController object
 
