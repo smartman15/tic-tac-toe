@@ -317,39 +317,70 @@ const screenController = (() => {
     const boardDiv = document.querySelector(".board");
 
     // updateScreen() function
-        // clear board by setting textcontent to ""
+    const updateScreen = () => {
+        // clear boardDiv by setting textcontent to ""
+        boardDiv.textContent = "";
 
         // get activePlayer from gameController
+        const activePlayer = gameController.getActivePlayer();
+        // get board from gameboard
+        const board = gameboard.getBoard();
 
         // display that it's activePlayer's turn by putting activePlayer as textcontent in playerTurnDiv
+        playerTurnDiv.textContent = activePlayer;
 
-        // using forEach to loop:
+        // using forEach to loop through board:
         // loop through board row, index as rowIdx
+        board.forEach((row, rowIdx) => {
             // loop through board cell, index as colIdx
+            row.forEach((cell, colIdx) => {
                 // create cellBtn variable as a button
+                let cellBtn = document.createElement("button");
                 // give cellBtn a class of 'cell'
+                cellBtn.classList.add("cell");
 
                 // give cellBtn data attribute for row and column
                 // set row to rowIdx
+                cellBtn.dataset.row = rowIdx;
                 // set column to colIdx
+                cellBtn.dataset.column = colIdx;
                 // set cellBtn textcontent to cell value
-                // push cellBtn into board
+                cellBtn.textContent = cell.getValue();
+                // append cellBtn into boardDiv
+                boardDiv.appendChild(cellBtn);
+            });    
+        });
+            
+    };
+        
 
     
     // create event listener for board
     // clickEventHandler function, e as parameter
+    function clickEventHandler(e){
         // create selectedRow variable 
         // create selectedCol variable
+        let selectedRow, selectedCol;
         // set selectedRow with e's rowIdx
+        selectedRow = e.target.dataset.row;
         // set selectedCol with e's colIdx
+        selectedCol = e.target.dataset.column;
 
         // create if statement to make sure a row and column has been clicked, not a gap
+        if(!selectedRow || !selectedCol) return;
 
         // pass selectedRow, selectedCol to playRound()
+        gameController.playRound(selectedRow, selectedCol);
+
         // execute updateScreen()
+        updateScreen();
+    }
+        
     // add the clickEventHandler to the board div
+    boardDiv.addEventListener("click", clickEventHandler);
 
     // update screen using updateScreen()
+    updateScreen();
 })();
 
 
